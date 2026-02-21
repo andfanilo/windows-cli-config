@@ -50,6 +50,16 @@ style = "bold cyan"
 
 ```
 
+This prevents the terminal from flashing or beeping when you backspace on an empty line or encounter a shell error.
+
+**File:** C:/Users/<User>/.inputrc
+
+```bash
+# Disable the visual/audible bell in Git Bash (Readline)
+set bell-style none
+
+```
+
 ---
 
 ## 🖥️ Phase 3: Host 1 - WezTerm (The Ghostty Alternative)
