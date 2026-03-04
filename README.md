@@ -1,6 +1,6 @@
 # 🚀 My Modern Windows Terminal
 
-**Windows Terminal Preview + PowerShell 7 + Starship + Neovim**
+## Windows Terminal Preview + PowerShell 7 + Starship + Neovim
 
 This protocol transitions you from a manual, scattered setup to a modern, Scoop-managed environment. Using Scoop ensures that Neovim, Starship, and all your favorite CLI utilities are always in your `PATH` without hunting for `.exe` files.
 
@@ -8,7 +8,7 @@ This protocol transitions you from a manual, scattered setup to a modern, Scoop-
 
 ---
 
-## 📦 Phase 1: The Modern Foundation (Scoop)
+## 🧱 Phase 1: The Modern Foundation (Scoop)
 
 Open the standard Windows PowerShell (the blue one) and run these to install your core stack.
 
@@ -18,18 +18,21 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
 # 2. Add Essential Buckets
+scoop install git
 scoop bucket add extras
 scoop install vcredist2022
 
 # 3. Install the "Rust" Stack
 # pwsh: PowerShell 7 | starship: Prompt | nvim: Editor
-scoop install pwsh git starship neovim fzf ripgrep fd zoxide eza
+scoop install pwsh starship neovim fzf ripgrep fd zoxide eza
 
-# 4.File Utils
-scoop install ffmpeg 7zip jq
+# 4. CLI Apps
+scoop install 7zip bat bottom delta ffmpeg jq less PSFzf
+scoop install caddy cloudflared duckdb gh hugo mkcert terraform tldr
+scoop install lazygit ttyd vhs yt-dlp
 
-# Other utilities
-scoop install less bat delta bottom PSFzf
+scoop bucket add stripe https://github.com/stripe/scoop-stripe-cli.git
+scoop install stripe
 
 # Terminal Preview
 winget install Microsoft.WindowsTerminal.Preview
@@ -207,7 +210,7 @@ Click **Open JSON file** (bottom-left of Settings) and merge these keys into you
 
 ---
 
-## 📝 Phase 4: Neovim (optional)
+## 📝 Phase 4: Neovim
 
 Neovim was installed in Phase 1 via Scoop. This section sets up [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) — a single-file config that bootstraps LSP, Treesitter, Telescope, and Autocomplete.
 
@@ -263,3 +266,26 @@ If Treesitter parsers fail to compile, force the compiler explicitly:
 * **To Search/Jump**: Use `cd [folder name]` — zoxide is wired in automatically
 * **System Monitor**: Type `btm` to launch Bottom — a Rust-based task manager in your terminal. Replaces `Ctrl+Shift+Esc`.
 * **To Update Everything**: Just run `scoop update *`. No installers, no websites.
+
+# 📦 Globally installed CLI Apps
+
+## Powershell
+
+```powershell
+irm https://astral.sh/uv/install.ps1 | iex
+irm bun.sh/install.ps1 | iex
+
+irm https://claude.ai/install.ps1 | iex
+irm https://ampcode.com/install.ps1 | iex
+```
+
+## NodeJS / Bun
+
+```powershell
+npm install -g @google/gemini-cli
+```
+
+## UV
+
+```powershell
+```
